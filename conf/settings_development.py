@@ -10,7 +10,7 @@ See the License for the specific language governing permissions and limitations 
 
 用于本地开发环境的全局配置
 """
-from settings import BASE_DIR
+from settings import BASE_DIR, PROJECT_MODULE_NAME
 import os
 
 # ===============================================================================
