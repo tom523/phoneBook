@@ -9,7 +9,7 @@ an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express o
 See the License for the specific language governing permissions and limitations under the License.
 """
 
-from common.mymako import render_mako_context
+from common.mymako import render_mako_context, render_json
 from django.http import HttpResponse
 import xlrd
 from models import PhoneBook
@@ -71,6 +71,16 @@ def phone_book(request):
     response_data = {"data": response_data}
     return HttpResponse(json.dumps(response_data))
 
+
+def get_phone_num(request):
+    all_record = PhoneBook.objects.all()
+    data = serializers.serialize("json", all_record)
+    data_json = json.loads(data)
+    response_data = []
+    for item in data_json:
+        response_data.append(item["fields"])
+    response_data = {"data": response_data}
+    return render_json(response_data)
 
 def home(request):
     """

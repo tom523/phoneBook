@@ -18,4 +18,5 @@ urlpatterns = patterns(
     (r'^contactus/$', 'contactus'),
     (r'^importExcel/$', 'import_excel'),
     (r'^phoneBook/', 'phone_book'),
+    (r'^getPhoneNum/', 'get_phone_num'),
 )
