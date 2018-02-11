@@ -73,6 +73,10 @@ def phone_book(request):
 
 
 def get_phone_num(request):
+    if not HostInfo.objects.count():
+        HostInfo(os_type='linux', hostname='test2', ip='10.1.1.2').save()
+        HostInfo(os_type='linux', hostname='test1', ip='10.1.1.1').save()
+        HostInfo(os_type='linux', hostname='test3', ip='10.1.1.3').save()
     all_record = HostInfo.objects.all()
     data = serializers.serialize("json", all_record)
     data_json = json.loads(data)
@@ -81,6 +85,7 @@ def get_phone_num(request):
         response_data.append(item["fields"])
     response_data = {"data": response_data}
     return render_json(response_data)
+
 
 def home(request):
     """
