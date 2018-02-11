@@ -26,4 +26,12 @@ class PhoneBook(models.Model):
         return self.name + " " + self.os_type + " " + self.hostname
 
 
+class HostInfo(models.Model):
+    os_type = models.CharField(max_length=20, default='linux')
+    hostname = models.CharField(max_length=20, default='default')
+    ip = models.CharField(max_length=20, default=0)
+
+    def __str__(self):
+        return self.os_type + " " + self.hostname + " " + self.ip
+
 

@@ -12,7 +12,7 @@ See the License for the specific language governing permissions and limitations 
 from common.mymako import render_mako_context, render_json
 from django.http import HttpResponse
 import xlrd
-from models import PhoneBook
+from models import PhoneBook, HostInfo
 from django.core import serializers
 import json
 
@@ -73,7 +73,7 @@ def phone_book(request):
 
 
 def get_phone_num(request):
-    all_record = PhoneBook.objects.all()
+    all_record = HostInfo.objects.all()
     data = serializers.serialize("json", all_record)
     data_json = json.loads(data)
     response_data = []
