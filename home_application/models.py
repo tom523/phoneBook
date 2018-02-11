@@ -20,9 +20,10 @@ class PhoneBook(models.Model):
     office_phone = models.CharField(max_length=20, default=0)
     room_num = models.CharField(max_length=20, default=0)
     os_type = models.CharField(max_length=20, default='linux')
+    hostname = models.CharField(max_length=20, default='default')
 
     def __str__(self):
-        return self.name + " " + self.os_type
+        return self.name + " " + self.os_type + " " + self.hostname
 
 
 
